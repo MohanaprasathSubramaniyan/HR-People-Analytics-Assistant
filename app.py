@@ -1,20 +1,3 @@
-import subprocess
-import sys
-
-# ===================== THE SLEDGEHAMMER =====================
-try:
-    import langchain
-    from langchain.chains import RetrievalQA
-except ImportError:
-    subprocess.check_call([
-        sys.executable, "-m", "pip", "install", 
-        "langchain", "langchain-core", "langchain-community", 
-        "langchain-chroma", "langchain-groq", "langchain-experimental", 
-        "sentence-transformers"
-    ])
-# ============================================================
-
-# Now we do the normal imports AFTER we've ensured the packages exist!
 import streamlit as st
 import pandas as pd
 import os
