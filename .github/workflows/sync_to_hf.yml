@@ -9,10 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install huggingface_hub
+      - name: Install dependencies
         run: pip install huggingface_hub
-      - name: Sync to Hugging Face
+      - name: Sync via Python API
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          huggingface-cli upload Mohanaprasath/HR-Analytics-Assistant ./ . --repo-type=space --exclude ".git/*" ".github/*"
+          python -c "
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi()
+          api.upload_folder(
+              folder_path='.',
+              repo_id='Mohanaprasath/HR-Analytics-Assistant',
+              repo_type='space',
+              token=os.environ.get('HF_TOKEN'),
+              ignore_patterns=['.git/*', '.github/*']
+          )
+          "
