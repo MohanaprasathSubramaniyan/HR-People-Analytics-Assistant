@@ -143,7 +143,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ===================== 3. SYSTEM CONFIGURATION =====================
-DATA_FOLDER = r"C:\HR_Project"
+# Change from local C:\ drive to relative paths for the cloud
+DATA_FOLDER = "." 
 DB_PATH = os.path.join(DATA_FOLDER, "chroma_db")
 CSV_PATH = os.path.join(DATA_FOLDER, "employees.csv")
 
