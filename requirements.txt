@@ -5,3 +5,6 @@ langchain-groq
 pandas
 PyPDF2
 python-dotenv
+langchain-chroma
+langchain-community
+sentence-transformers
