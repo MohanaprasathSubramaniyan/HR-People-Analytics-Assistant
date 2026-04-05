@@ -6,4 +6,3 @@ langchain-chroma
 langchain-groq
 langchain-experimental
 sentence-transformers
- 
