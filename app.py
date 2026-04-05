@@ -8,7 +8,30 @@ from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_groq import ChatGroq
 from langchain.chains import RetrievalQA
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+import subprocess
+import sys
 
+# ===================== THE SLEDGEHAMMER =====================
+# If Hugging Face fails to read the requirements file, this forces the 
+# server to install everything manually before the app runs.
+try:
+    import langchain
+    from langchain.chains import RetrievalQA
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "langchain", "langchain-core", "langchain-community", "langchain-chroma", "langchain-groq", "langchain-experimental", "sentence-transformers"])
+# ============================================================
+
+import streamlit as st
+import pandas as pd
+import os
+
+from langchain_chroma import Chroma
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_groq import ChatGroq
+from langchain.chains import RetrievalQA
+from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+
+# ... (the rest of your Page Configuration and code stays exactly the same)
 # ===================== 1. PAGE CONFIGURATION =====================
 st.set_page_config(
     page_title="HR & People Analytics Assistant",
