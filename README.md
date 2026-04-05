@@ -6,6 +6,7 @@ colorTo: pink
 sdk: streamlit
 app_file: app.py
 pinned: false
+python_version: 3.10.13
 ---
 # 🏢 HR & People Analytics Assistant
 
