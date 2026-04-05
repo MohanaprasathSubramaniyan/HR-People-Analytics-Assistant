@@ -1,7 +1,8 @@
 streamlit
 pandas
-langchain
-langchain-community
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
 langchain-chroma
 langchain-groq
 langchain-experimental
