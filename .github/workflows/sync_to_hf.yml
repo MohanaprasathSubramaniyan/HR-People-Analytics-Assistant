@@ -24,6 +24,6 @@ jobs:
               repo_id='Mohanaprasath/HR-Analytics-Assistant',
               repo_type='space',
               token=os.environ.get('HF_TOKEN'),
-              ignore_patterns=['.git/*', '.github/*']
+              ignore_patterns=['.git/*', '.github/*', 'chroma_db/*', '__pycache__/*']
           )
           "
