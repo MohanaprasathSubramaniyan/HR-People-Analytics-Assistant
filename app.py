@@ -4,7 +4,8 @@ import os
 
 from langchain_chroma import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
-from langchain_community.llms import Ollama
+# REMOVED: from langchain_community.llms import Ollama
+from langchain_groq import ChatGroq
 from langchain.chains import RetrievalQA
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 
@@ -192,7 +193,11 @@ def set_data_view(view_name):
 def get_policy_answer(query):
     embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     db = Chroma(persist_directory=DB_PATH, embedding_function=embedding_function)
-    llm = Ollama(model="llama3")
+    
+    # NEW: Groq API Integration
+    groq_api_key = os.environ.get("GROQ_API_KEY")
+    llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama-3.3-70b-versatile")
+    
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm, chain_type="stuff",
         retriever=db.as_retriever(search_kwargs={"k": 3}),
@@ -202,7 +207,10 @@ def get_policy_answer(query):
     return result["result"], result["source_documents"]
 
 def get_data_answer(query):
-    llm = Ollama(model="llama3")
+    # NEW: Groq API Integration
+    groq_api_key = os.environ.get("GROQ_API_KEY")
+    llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama-3.3-70b-versatile")
+    
     agent = create_pandas_dataframe_agent(
         llm, df, verbose=True, allow_dangerous_code=True
     )
