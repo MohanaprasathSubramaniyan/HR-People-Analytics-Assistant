@@ -5,7 +5,7 @@ import os
 from langchain_chroma import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_groq import ChatGroq
-from langchain.chains import RetrievalQA
+from langchain_classic.chains import RetrievalQA
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 
 
