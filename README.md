@@ -1,3 +1,12 @@
+---
+title: HR Analytics Assistant
+emoji: 📊
+colorFrom: purple
+colorTo: pink
+sdk: streamlit
+app_file: app.py
+pinned: false
+---
 # 🏢 HR & People Analytics Assistant
 
 **A Secure, Local AI Dashboard for HR Policy Insights and Workforce Data Analysis.**
